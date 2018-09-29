@@ -14,7 +14,7 @@
       auth: {},
       scene: null,
       'shopType': '1',
-      'shopName': '连江日用品专营店',
+      'shopName': '妙想家亲子阅读',
       'appCode': 'owVHb1gHrvktni80kjMlFMzSDJDWY0xR',
       'baseUrl': 'https://www.easy-mock.com/mock/5ab7c9627a7afd3099d16b4c/customer',
       version: 'v3.2.3',
@@ -35,15 +35,15 @@
         },
         'pages/goods/search': {
           'hotKeywords': [
-            '抽纸',
-            '卷纸',
-            '面巾纸',
-            '卫生巾',
-            '湿纸巾',
-            '维达',
-            '维达',
-            '波斯猫',
-            '妙洁'
+            '故事情节类',
+            '情绪处理类',
+            '社会交往类',
+            '行为习惯类',
+            '儿歌诗词类',
+            '认知识物类',
+            '玩具手工类',
+            '幼小衔接类',
+            '文学名著类'
           ]
         }
       }

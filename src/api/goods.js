@@ -46,7 +46,8 @@ export default class goods extends base {
    * 查询商品详情
    */
   static getInfo (goodsId, discount) {
-    const url = `${this.baseUrl}/goods/${goodsId}`;
+    // const url = `${this.baseUrl}/goods/${goodsId}`;
+    const url = `http://127.0.0.1:8000/api/v1/books/${goodsId}/detail/`;
     return this.get(url, {}).then(data => {
       this._processGoodsDiscount(data, discount);
       return this._processGoodsDetail(data)
@@ -243,14 +244,26 @@ export default class goods extends base {
    * 处理预览图
    */
   static _processGoodsPreview (item) {
-    const images = item.images;
+    /**
+     * 由于妙想家阅读馆的图书封面只有一张，所以处理封面时要分情况而定
+     */
+    let images = item.images;
+    const pageImage = item.page_image_large;
     // 图片处理
+    if (pageImage && (images == null || images.length < 1)) {
+      images = [{
+        'url': pageImage
+      }];
+      item.images = images;
+    }
+
     if (images == null || images.length < 1) {
       item.imageUrl = '/images/icons/broken.png';
     } else if (images[0].url == null) {
       item.imageUrl = '/images/icons/broken.png';
     } else {
-      item.imageUrl = images[0].url + '/medium';
+      // item.imageUrl = images[0].url + '/medium';
+      item.imageUrl = images[0].url;
     }
   }
 }

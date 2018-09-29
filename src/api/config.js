@@ -16,7 +16,9 @@ export default class config extends base {
    * 获取布局视图
    */
   static layout(pageId) {
-    const url = `${this.baseUrl}/layout/pages/${pageId}`;
+    // const url = `${this.baseUrl}/layout/pages/${pageId}`;
+    // const url = `${this.baseUrl}/layout/pages/2`;
+    const url = `http://127.0.0.1:8000/api/v1/layout/pages/${pageId}`;
     return this.get(url).then(data => this._processPage(data.message));
   }
 
@@ -24,7 +26,8 @@ export default class config extends base {
    * 获取店铺完整配置信息
    */
   static init () {
-    const url = `${this.baseUrl}/shops/full`;
+    // const url = `${this.baseUrl}/shops/full`;
+    const url = `http://127.0.0.1:8000/api/v1/shops/full`;
     return this.get(url).then(data => {
       return {
         homePageId: data.homePageId,

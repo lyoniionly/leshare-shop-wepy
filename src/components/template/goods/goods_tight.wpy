@@ -1,9 +1,9 @@
 <template>
   <view class="column goods-tight-box">
-    <view class="tight-discount-box row" wx:if="{{goods.discount}}">
+    <!--<view class="tight-discount-box row" wx:if="{{goods.discount}}">
       <icon class="vip xsmall" color="white" />
       <text>{{goods.discountRate}}</text>
-    </view>
+    </view>-->
     <!--图片-->
     <image class="goods-image" lazy-load src="{{goods.imageUrl}}" @tap="routeToGoods({{goods.id}})"></image>
     <view class="content-box column" wx:if="{{goods.isName || goods.isPrice}}">
@@ -11,16 +11,20 @@
       <text class="inline" wx:if="{{goods.isGoodsName}}" @tap="routeToGoods({{goods.id}})">{{goods.name}}</text>
 
       <!--销量-->
-      <text class="xs muted" wx:if="{{goods.isSales}}">已售{{goods.salesVolume}}件</text>
+      <!--<text class="xs muted" wx:if="{{goods.isSales}}">已售{{goods.salesVolume}}件</text>-->
+
+      <!--作者-->
+      <text class="xs muted">{{goods.authors}}</text>
 
       <!--购物车与价格标签-->
       <view class="row-between" wx:if="{{goods.isPrice || goods.isCart}}">
         <view class="row">
-          <text class=" lg major" >￥{{goods.priceLable}}</text>
+          <!--<text class=" lg major" >￥{{goods.sell_price}}</text>-->
+          <text class=" lg major" >库存: {{goods.stock}}</text>
         </view>
         <!--加入购物车按钮-->
         <block wx:if="{{goods.isCart || goods.isCart == null}}">
-          <icon class="plus"  @tap="handlePlusCart({{goods}})" wx:if="{{goods.totalStock > 0}}"/>
+          <icon class="plus"  @tap="handlePlusCart({{goods}})" wx:if="{{goods.stock > 0}}"/>
           <text class="xxs muted" wx:else>已售罄</text>
         </block>
 
